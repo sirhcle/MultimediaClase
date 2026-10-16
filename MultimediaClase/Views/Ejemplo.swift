@@ -41,6 +41,7 @@ enum Seccion: String, CaseIterable, Identifiable {
 ///   para comparar y guardar valores en la pila de pantallas.
 enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
     case galeria
+    
     /*
      case album
      case filtros
