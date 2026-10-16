@@ -41,12 +41,10 @@ enum Seccion: String, CaseIterable, Identifiable {
 ///   para comparar y guardar valores en la pila de pantallas.
 enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
     case galeria
-    
-    /*
      case album
      case filtros
      case imagenesRemotas
-     */
+     
     // MARK: Datos para el menú
 
    /// Identificador único: el nombre del caso.
@@ -60,6 +58,9 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
     var titulo: String {
         switch self {
         case .galeria: "Galería con PhotosPicker"
+        case .album: "Mi álbum con FileManager"
+        case .filtros: "Editor de filtros (extra)"
+        case .imagenesRemotas: "Imágenes remotas (extra)"
         }
     }
     
@@ -69,6 +70,9 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
     var icono: String {
         switch self {
         case .galeria: "photo.on.rectangle"
+        case .album: "folder"
+        case .filtros: "wand.and.stars"
+        case .imagenesRemotas: "network"
         }
     }
     
@@ -76,7 +80,7 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
     /// Puedes juntar varios casos en una misma rama separándolos con comas.
     var seccion: Seccion {
         switch self {
-        case .galeria: .seccion1
+        case .galeria, .album, .filtros, .imagenesRemotas: .seccion1
         }
     
     }
