@@ -9,6 +9,12 @@ struct GaleriaView: View {
     /// aunque SwiftUI vuelva a dibujar la pantalla muchas veces.
     @State private var viewModel = GaleriaViewModel()
     
+    /// Columnas de la cuadrícula.
+    /// `GridItem(.adaptive(minimum: 100))` dice: "mete tantas columnas como quepan,
+    /// cada una de al menos 100 puntos". Así funciona igual en iPhone y en iPad.
+    private let columnas = [GridItem(.adaptive(minimum: 100), spacing: 8)]
+    
+    
     //MARK: - Cuerpo
     
     var body: some View {
@@ -18,7 +24,28 @@ struct GaleriaView: View {
         @Bindable var viewModel = viewModel
         
         ScrollView {
-            Text("Fotos Elegidas: \(viewModel.fotos.count)")
+            if viewModel.fotos.isEmpty {
+                ContentUnavailableView(
+                    "Sin fotos",
+                    systemImage: "photo",
+                    description: Text("Toca el botón para elegir hasta \(viewModel.maximoFotos) fotos.")
+                    )
+            } else {
+                LazyVGrid(columns: columnas, spacing: 8) {
+                    
+                    ForEach(viewModel.fotos) { foto in
+                        CeldaCuadrada {
+                            Image(uiImage: foto.imagen)
+                                .resizable()
+                                .scaledToFit()
+                        }
+                        .onTapGesture {
+                            viewModel.fotoAmpliada = foto
+                        }
+                    }
+                }
+                .padding()
+            }
         }
         .navigationTitle("Galería")
         .toolbar {
@@ -37,6 +64,10 @@ struct GaleriaView: View {
         // Cada vez que cambia la selección, se cargan las imágenes con await dentro de un Task.
         .onChange(of: viewModel.seleccion) { _, nuevos in
             Task { await viewModel.cargar(nuevos) }
+        }
+        .fullScreenCover(item: $viewModel.fotoAmpliada) { foto in
+            Text("aquí va la foto seleccionada")
+            //DetalleFotoView(foto: foto)
         }
     }
 }
