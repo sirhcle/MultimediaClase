@@ -39,7 +39,7 @@ struct MenuView: View {
         // Día 1: imágenes (al empezar, las cuatro líneas muestran un texto provisional;
         // las vas cambiando por la vista real conforme creas cada pantalla)
         case .galeria:
-            Text("Próximamente vista de galeria")
+            GaleriaView()
         case .album:
             Text("Próximamente vista de album")
         case .filtros:
