@@ -10,5 +10,5 @@ struct Foto: Identifiable {
     /// `UUID()` crea un identificador al azar que nunca se repite.
     let id = UUID()
     
-    let image: UIImage
+    let imagen: UIImage
 }
