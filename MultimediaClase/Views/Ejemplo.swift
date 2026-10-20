@@ -10,6 +10,7 @@
 ///   para distinguir una sección de otra.
 enum Seccion: String, CaseIterable, Identifiable {
     case seccion1 = "Sección 1 - Imagenes"
+    case seccion2 = "Sección 2 - Audio"
     
     /// Identificador de cada caso: su texto, que ya es único.
     /// Es una propiedad calculada (computed property): no guarda nada,
@@ -40,11 +41,16 @@ enum Seccion: String, CaseIterable, Identifiable {
 ///   `NavigationLink(value:)` y `.navigationDestination(for:)` lo necesitan
 ///   para comparar y guardar valores en la pila de pantallas.
 enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
+    
     case galeria
-     case album
-     case filtros
-     case imagenesRemotas
+    case album
+    case filtros
+    case imagenesRemotas
      
+    case reproductorAudio
+    case grabadora
+    case textoAVoz
+    case misAudios
     // MARK: Datos para el menú
 
    /// Identificador único: el nombre del caso.
@@ -61,6 +67,12 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
         case .album: "Mi álbum con FileManager"
         case .filtros: "Editor de filtros (extra)"
         case .imagenesRemotas: "Imágenes remotas (extra)"
+            
+        case .reproductorAudio: "Reproductor de audio"
+        case .grabadora: "Grabadora de voz"
+        case .textoAVoz: "Texto a voz (extra)"
+        case .misAudios: "Mis audios e importar (extra)"
+
         }
     }
     
@@ -73,6 +85,12 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
         case .album: "folder"
         case .filtros: "wand.and.stars"
         case .imagenesRemotas: "network"
+            
+        case .reproductorAudio: "play.circle"
+        case .grabadora: "mic"
+        case .textoAVoz: "text.bubble"
+        case .misAudios: "music.note.list"
+
         }
     }
     
@@ -81,6 +99,7 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
     var seccion: Seccion {
         switch self {
         case .galeria, .album, .filtros, .imagenesRemotas: .seccion1
+        case .reproductorAudio, .grabadora, .textoAVoz, .misAudios: .seccion2
         }
     
     }

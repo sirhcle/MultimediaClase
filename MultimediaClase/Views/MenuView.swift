@@ -46,6 +46,16 @@ struct MenuView: View {
             Text("Próximamente... o no")
         case .imagenesRemotas:
             ImagenesRemotasView()
+            
+        case .reproductorAudio:
+            Text("Próximamente")
+        case .grabadora:
+            Text("Próximamente")
+        case .textoAVoz:
+            Text("Próximamente")
+        case .misAudios:
+            Text("Próximamente")
+
         }
     }
 }
