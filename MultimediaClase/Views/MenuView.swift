@@ -45,7 +45,7 @@ struct MenuView: View {
         case .filtros:
             Text("Próximamente... o no")
         case .imagenesRemotas:
-            Text("Próximamente... o no x2")
+            ImagenesRemotasView()
         }
     }
 }
