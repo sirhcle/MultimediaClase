@@ -7,7 +7,7 @@ import UIKit
 ///
 /// Como no guarda estado propio (solo trabaja con archivos), se usa como singleton:
 /// una única instancia compartida, `FotoManager.shared`, igual que los managers del módulo 7.
-struct FotoManager {
+public struct FotoManager {
     static let shared = FotoManager()
     
     private let carpeta = URL.documentsDirectory.appending(path: "Fotos", directoryHint: .isDirectory)

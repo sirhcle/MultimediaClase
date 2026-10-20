@@ -41,7 +41,7 @@ struct MenuView: View {
         case .galeria:
             GaleriaView()
         case .album:
-            Text("Próximamente vista de album")
+            AlbumView()
         case .filtros:
             Text("Próximamente... o no")
         case .imagenesRemotas:

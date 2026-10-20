@@ -12,11 +12,11 @@ import SwiftUI
 ///   **cualquier** tipo de vista. Quien usa la celda decide qué poner dentro
 ///   (una `Image`, un `AsyncImage`, un `ProgressView`...).
 ///   Es lo mismo que hacen `VStack` o `Button` con lo que les pasas entre llaves.
-struct CeldaCuadrada<Contenido: View> : View {
+public struct CeldaCuadrada<Contenido: View> : View {
     
     @ViewBuilder let contenido: () -> Contenido
     
-    var body: some View {
+    public var body: some View {
         Color.gray.opacity(0.15)
             .aspectRatio(1, contentMode: .fit)
             .overlay { contenido() }
