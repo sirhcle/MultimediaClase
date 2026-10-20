@@ -52,9 +52,9 @@ struct MenuView: View {
         case .grabadora:
             Text("Próximamente")
         case .textoAVoz:
-            Text("Próximamente")
+            Text("Próximamente... tal vez")
         case .misAudios:
-            Text("Próximamente")
+            Text("Próximamente... tal vez x2")
 
         }
     }
