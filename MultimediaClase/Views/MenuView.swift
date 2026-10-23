@@ -48,7 +48,7 @@ struct MenuView: View {
             ImagenesRemotasView()
             
         case .reproductorAudio:
-            Text("Próximamente")
+            ReproductorAudioView()
         case .grabadora:
             Text("Próximamente")
         case .textoAVoz:
