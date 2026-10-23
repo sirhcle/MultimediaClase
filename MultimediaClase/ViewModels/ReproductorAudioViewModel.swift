@@ -26,5 +26,55 @@ final class ReproductorAudioViewModel {
             Task { @MainActor in self?.terminoElSonido() }
         }
     }
+    
+    // MARK: - Acciones
+
+    /// Toca un sonido. Si ya es el actual, alterna entre pausa y reproducción.
+    func tocar(_ sonido: Sonido) {
+        if sonido == actual {
+            alternar()
+            return
+        }
+        
+        guard let url = sonido.url else {
+            mensaje = "No se encontró \(sonido.archivo).wav. ¿Revisa que se haya agregado al proyecto?"
+            return
+        }
+        
+        do {
+            try reproductor.cargar(url)
+            actual = sonido
+            mensaje = ""
+            reproductor.reproducir()
+            reproduciendo = true
+        } catch {
+            mensaje = "No se pudo reproducir el sonido"
+        }
+    }
+    
+    /// Botón de play/pausa: si suena, pausa; si está en pausa, reanuda.
+    func alternar() {
+        if reproduciendo {
+            reproductor.pausar()
+            reproduciendo = false
+        } else {
+            reproductor.reproducir()
+            reproduciendo = true
+        }
+    }
+
+    /// Detiene el audio.
+    func detener() {
+        reproductor.detener()
+        reproduciendo = false
+    }
+    
+    // MARK: - Ayudantes
+
+    /// Se llama cuando el audio llega a su final.
+    private func terminoElSonido() {
+        reproduciendo = false
+    }
+
 
 }
