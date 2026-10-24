@@ -11,6 +11,8 @@
 enum Seccion: String, CaseIterable, Identifiable {
     case seccion1 = "Sección 1 - Imagenes"
     case seccion2 = "Sección 2 - Audio"
+    case seccion3 = "Sección 3 - Video"
+    
     
     /// Identificador de cada caso: su texto, que ya es único.
     /// Es una propiedad calculada (computed property): no guarda nada,
@@ -51,6 +53,8 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
     case grabadora
     case textoAVoz
     case misAudios
+    
+    case reproductorVideo
     // MARK: Datos para el menú
 
    /// Identificador único: el nombre del caso.
@@ -73,6 +77,8 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
         case .textoAVoz: "Texto a voz (extra)"
         case .misAudios: "Mis audios e importar (extra)"
 
+        case .reproductorVideo: "Reproductor de video"
+            
         }
     }
     
@@ -91,6 +97,7 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
         case .textoAVoz: "text.bubble"
         case .misAudios: "music.note.list"
 
+        case .reproductorVideo: "play.circle"
         }
     }
     
@@ -100,6 +107,7 @@ enum Ejemplo: String, CaseIterable, Identifiable, Hashable {
         switch self {
         case .galeria, .album, .filtros, .imagenesRemotas: .seccion1
         case .reproductorAudio, .grabadora, .textoAVoz, .misAudios: .seccion2
+        case .reproductorVideo: .seccion3
         }
     
     }

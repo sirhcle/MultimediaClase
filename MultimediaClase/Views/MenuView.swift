@@ -56,6 +56,8 @@ struct MenuView: View {
         case .misAudios:
             Text("Próximamente... tal vez x2")
 
+        case .reproductorVideo:
+            ReproductorVideoView()
         }
     }
 }
